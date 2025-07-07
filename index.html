@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday Hitakshi 🎉</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+
+      *{
+        user-select: none;
+      }
+      body {
+        margin: 0;
+        font-family: "Roboto", sans-serif;
+        background: linear-gradient(to right, #ffe6f0, #fff0f5);
+      }
+      .flex{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+      }
+      .screen {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      .final_screen {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      h1 {
+        font-family: "Great Vibes", cursive;
+        font-size: 3.5em;
+        color: #ff4f81;
+        margin-bottom: 20px;
+      }
+      p {
+        font-size: 1.2em;
+        color: #333;
+        max-width: 500px;
+      }
+      .buttons {
+        margin-top: 30px;
+      }
+      button {
+        padding: 12px 30px;
+        font-size: 1em;
+        margin: 10px;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background-color: #ff69b4;
+        color: white;
+      }
+
+      #no {
+        background-color: #f0f0f0;
+        color: #ff4f81;
+        position: absolute;
+      }
+      .hidden {
+        display: none;
+      }
+      .confetti {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 999;
+      }
+      #text_screen3 {
+        font-size: 1.6em;
+        max-width: 700px;
+        white-space: pre-wrap;
+        font-family: "Great Vibes", cursive;
+        color: #ff4f81;
+        animation: typing 3s steps(40, end), blink 0.75s step-end infinite;
+      }
+      #heartCatch {
+        font-size: 1.3em;
+        max-width: 600px;
+        color: #ff4f81;
+      }
+      #gameCanvas {
+        background: #fff0f5;
+        display: block;
+        margin-top: 20px;
+        border: 2px solid #ffb6c1;
+        border-radius: 10px;
+      }
+      #scoreDisplay {
+        font-size: 1.2em;
+        color: #d6336c;
+        margin-top: 10px;
+      }
+
+      @keyframes heartbeat{
+        from{
+          font-size: 4em;
+        }
+        to{
+          font-size: 5em;
+        }
+      }
+      #heart {
+        animation: heartbeat 1s ease-in-out 0.5s infinite alternate;
+        user-select: none;
+        padding: auto;
+      }
+
+      #screen6 {
+        margin: 0px;
+        font-family: "Roboto", sans-serif;
+        background: linear-gradient(to bottom right, #ffe6f0, #fff5e6);
+        color: #333;
+      }
+      header {
+        text-align: center;
+        padding: 100px 20px 50px;
+        background-color: #ffccdd;
+      }
+      header h1 {
+        font-family: "Great Vibes", cursive;
+        font-size: 3.5em;
+        color: #fff;
+        margin: 0;
+      }
+      section {
+        padding: 60px 20px;
+        max-width: 900px;
+        margin: auto;
+      }
+      .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+      }
+      .gallery img {
+        width: 200px;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+      .love-letter {
+        font-family: "Great Vibes", cursive;
+        font-size: 1.5em;
+        text-align: center;
+        padding: 30px;
+        background: #fff0f5;
+        border-radius: 20px;
+      }
+      .timeline {
+        border-left: 3px solid #ff8ab6;
+        padding-left: 30px;
+      }
+      .timeline-item {
+        margin-bottom: 30px;
+        opacity: 0;
+        transform: translateX(-100px);
+        transition: all 1s ease-out;
+      }
+      .timeline-item.show{
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .song {
+        text-align: center;
+      }
+      footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #ffd6e0;
+        font-size: 0.9em;
+      }
+      .envelope {
+      margin: 30px;
+      padding: auto;
+      border-radius: 15px;
+      width: 200px;
+      height: 200px;
+      text-align: center;
+      font-size: 10em;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    .envelope:hover{
+      border: 2px solid #75f3f7;
+      box-shadow: 0 0 10px #75f3f7, 0 0 20px #75f3f7, 0 0 30px #75f3f7;
+      transform: translateY(-10px);
+      margin: 20px 28px;
+      transition: transform 0.5s ease-out;
+    }
+
+    .giftButton{
+      position: absolute;
+      background: #ffccff;
+      border-radius: 50%;
+      padding: 10px 15px;
+      font-size: 24px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      animation: pop 4s infinite;
+    }
+    @keyframes pop{
+      0%, 100%{
+        transform: scale(1);
+      }
+      50%{
+        transform: scale(1.2);
+      }
+    }
+
+    </style>
+  </head>
+  <body>
+
+    <div id="screen1" class="screen">
+      <img src="tkthao219-bubududu.webp" alt="">
+      <h1>Will You Be Mine Forever? 🥺❤️</h1>
+      <p id="threat">
+        You have to click "yes" only.... and yeah its a threat, don't you even dare to click "no".
+      </p>
+      <div class="buttons">
+        <button id="yes" onclick="funcScreen2()">yes 💖</button>
+        <button id="no">no 🙈</button>
+      </div>
+    </div>
+
+    <div id="screen2" class="screen hidden">
+      <img src="bubu-bubu-dudu.gif" alt="">
+      <h1>Yayyy!! 🥳💍</h1>
+      <p style="margin-bottom: 0;">
+        You just made me the happiest person alive!
+      </p>
+      <p style="margin-top: 10px;">
+        I love you, Hitakshi. Forever and ever. 💕
+      </p>
+      <button id="continue" onclick="nextScreen('screen3'); typeWriter()">
+        Continue >
+      </button>
+      <canvas class="confetti"></canvas>
+    </div>
+
+    <div id="screen3" class="screen hidden">
+      <p id="text_screen3"></p>
+      <button onclick=" waiting_screen();">
+        💖 Tap to Continue
+      </button>
+      <p id="error" style="color: #d6336c;"></p>
+      <img src="dudu-bubu-playing-funny.webp" src="">
+    </div>
+
+    <div id="screen4" class="screen hidden">
+      <p id="heartCatch">
+        Catch my heart 💕! Reach 10 and unlock the surprise!
+      </p>
+      <canvas id="gameCanvas" width="400" height="500"></canvas>
+      <p id="scoreDisplay">Hearts Caught: 0</p>
+    </div>
+
+    <div id="screen5" class="screen hidden">
+      <h1 id="heartRate">80</h1>
+      <div style="height: 150px;"><div id="heart">❤️</div></div>
+      <p class="heart">This is my heart</p>
+      <h1 id="myHeart">Hold my Heart</h1>
+    </div>
+
+    <div id="screen6" class="final_screen hidden">
+      <header style="text-align: center;">
+        <h1>Happy Birthday Hitakshi 💖</h1>
+        <p style="text-align: center;">You are the most beautiful part of my world ✨</p>
+      </header>
+
+      <section>
+        <img src="happy-birthday.gif" alt="">
+      </section>
+
+      <section>
+        <h2 style="text-align: center">🎀 Gallery of Memories</h2>
+        <div class="gallery">
+          <img src="image1.jpg" alt="Photo 1" />
+          <img src="image2.jpg" alt="Photo 2" />
+          <img src="image3.jpg" alt="Photo 3" />
+        </div>
+      </section>
+
+      <section class="love-letter">
+        <p>Dear Hitakshi,</p>
+        <p>
+          From the moment we met, my world has felt brighter. You are my peace,
+          my smile, my everything. On this special day, I wish you all the love
+          and happiness you bring into my life. Happy Birthday, love! 🎂💫
+        </p>
+        <p>Forever yours,<br />Mannat</p>
+      </section>
+
+      <section>
+        <h2 style="text-align: center">Click to open gifts 💗</h2>
+        <div class="flex">
+
+          <div class="envelope gift1">
+            🎁
+            <audio src="audio1.m4a" id="audio1"></audio>
+          </div>
+          
+          <div class="envelope gift2">
+            🎁
+            <audio src="audio2.m4a" id="audio2"></audio>
+          </div>
+
+          <div class="envelope gift3">
+            🎁
+            <audio src="audio3.m4a" id="audio3"></audio>
+          </div>
+          
+          <div class="envelope gift4">
+            🎁
+            <audio src="audio4.m4a" id="audio4"></audio>
+          </div>
+          
+          <div class="envelope gift5">
+            🎁
+          <audio src="audio5.m4a" id="audio5"></audio>
+          </div>
+
+          <div class="envelope gift6">
+            🎁
+            <audio src="audio6.m4a" id="audio6"></audio>
+          </div>
+          
+        </div>
+      </section>
+
+      <section>
+        <h2 style="text-align: center">📅 Our Journey</h2>
+
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <h3>25th October 2024 - The Proposal 💌</h3>
+            <p>
+              This was one of my favourite convos, I can never forget it.  
+              "Hitakshi?" , "Hey"... and my heart has been yours ever since.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <h3>1st November 2024 - Miss Possesive💫</h3>
+            <p>
+              God... the possesion in you, always have my heart, that cute threats, like when you said that day, don't you dare to think of anything, focus on your studies and no worries.
+            </p>
+
+          <div class="timeline-item">
+            <h3>10th November 2024 - Mr. Protective✨</h3>
+            <p>
+              When I started calling you Miss Possesive, you always texted,  
+              "will soon find a good name" and that day was the first time,  
+              you found a name, and you called me Mr. Protective.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <h3>11th November 2024 - First Shayari Shared 💕</h3>
+            <p>
+              Remember thayt shyayaris we shared:
+              &nbsp;
+              Bas inta qarib rakho ki,
+              Baat na bhi ho toh buri na lage.
+              &nbsp;
+              When a million loved you, I'm one of them.
+              When one loved you, I'm the one.
+              When no one love you. You know I'm dead.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <h3>13th November 2024 - First Letter by you 💟</h3>
+            <p>
+              It was my last day in allen, any you gave me letter for my birthday. 
+              &nbsp;
+              And remember, when in evening, we were going back home. 
+              We both had tears in our eyes hidden by smile on our face.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <h3>8th December 2024 - First Hand-hold 💝</h3>
+            <p>
+              I still remember how much I was shocked and happy at the same time.
+              The time did stopped there when you said, "apna hath do", 
+              I was in so disbelief, how could it be true? 
+              And I asked again in disbelief, "kya" 
+              then you said, "haath do apna, kuck memory to honi chahiye"
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <h3>9th December 2024 - First I love you 💘</h3>
+            <p>
+              Yes, this was the date when we both together said I love you for the first time.
+              No one is gonna believe that it took this much time to say it.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <h3>19th February 2025 - First letter by me ❣️</h3>
+            <p>
+              That letter I gave you and you had to decode it. It was actually fun, 
+              when I asked you out of class to give you that card.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <h3>30th June 2025 - First meet 💘</h3>
+            <p>
+              Obviously one of the most special and unforgettable day. Our first meet, first hug, first date.... That was really one of my favourite moments. Thank You..
+            </p>
+          </div>
+
+        </div>
+
+      </section>
+
+      <section class="song">
+        <h2>🎵 Our Song</h2>
+        <iframe style="border-radius:12px" 
+        src="https://open.spotify.com/embed/track/5XeFesFbtLpXzIVDNQP22n?utm_source=generator" width="100%" height="352" frameBorder="0" 
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+        loading="lazy"></iframe>
+      </section>
+
+      <section style="text-align: center">
+        <h2>🎁 A Surprise Awaits!</h2>
+        <p>Scan this QR to view your secret gift 💌</p>
+        <img
+          src="image-qr.jpg"
+          alt="QR Code"
+        />
+      </section>
+
+      <footer>Made with ❤️ by Mannat for Hitakshi | 2025</footer>
+
+    </div>
+      
+    <script>
+
+      setInterval(() => {
+        const btn = document.createElement("button");
+        btn.className = "giftButton";
+        btn.style.left = Math.random()*90 +"vw";
+        btn.style.top = Math.random()*90 +"vh";
+        btn.innerText = "🎁";
+        btn.onclick = () => {
+          alert("Happy birthday baby 🥳❤️");
+          btn.remove()
+        }
+        document.body.appendChild(btn);
+        setTimeout(() => {
+          try {
+            btn.remove();
+          } catch (error) {
+            
+          };
+        }, 3000);
+      }, 16000);
+
+      const noBtn = document.getElementById("no");
+
+       function waiting_screen(){
+        if(document.getElementById("text_screen3").innerText.endsWith("person 💖")){
+          nextScreen('screen4');
+          startGame();
+        }
+        else{
+          document.getElementById("error").innerText = "wait for it honey..."
+        }
+      }
+
+      function nextScreen(id) {
+        document
+          .querySelectorAll(".screen")
+          .forEach((s) => s.classList.add("hidden"));
+        document.getElementById(id).classList.remove("hidden");
+      }
+
+      document.getElementById("heart").addEventListener("mouseover", () => {
+        let interval = setInterval(() => {
+          document.getElementById("heartRate").innerText = parseInt(document.getElementById("heartRate").innerText) + 2;
+
+          let hrate = document.getElementById("heartRate").innerText;
+          document.getElementById("heart").style.animationDuration = `${1 - hrate/150}s`;
+
+          document.getElementById("heart").addEventListener("mouseleave", () => {
+            clearInterval(interval)
+          });
+
+          if(hrate >= 140){
+            clearInterval(interval);
+            document.getElementById("screen5").innerHTML = `<img src="bubu-bubu-dudu.gif">`;
+            nextScreen("screen6");
+          }
+
+          else if(hrate >= 120){
+            document.querySelector(".heart").innerText = "This is my heart when I talk to you";
+            document.getElementById("myHeart").innerText = "Just a little more";
+          }
+
+          else if(hrate >= 100){
+            document.querySelector(".heart").innerText = "This is my heart when I see you";
+            document.getElementById("myHeart").innerText = "Keep holding my heart";
+          }
+        },500);
+      });
+
+      noBtn.addEventListener("mouseover", () => {
+        noBtn.style.top = Math.random() * window.innerHeight/1.1 + "px";
+        noBtn.style.left = Math.random() * window.innerWidth/1.1 + "px";
+        let threat = document.getElementById("threat")
+        if (threat.innerText.endsWith(`"no".`)) {
+          threat.innerText += "\nHehe, how do you even think I'll let you say no 😂"
+        }
+        else if(threat.innerText.endsWith("no 😂")){
+          threat.innerText += "\nPlease say yes babe ❤️(Cute threat)"
+        }
+      });
+
+      function funcScreen2() {
+        nextScreen("screen2");
+
+        const canvas = document.querySelector(".confetti");
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const confettis = [];
+
+        for (let i = 0; i < 200; i++) {
+          confettis.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height - canvas.height,
+            r: Math.random() * 4 + 2,
+            d: Math.random() * 40 + 10,
+            color: `hsl(${Math.random() * 360}, 100%, 70%)`,
+            tilt: Math.random() * 10 - 5,
+          });
+        }
+
+        function draw() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          confettis.forEach((c) => {
+            ctx.beginPath();
+            ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2);
+            ctx.fillStyle = c.color;
+            ctx.fill();
+          });
+          update();
+        }
+
+        function update() {
+          confettis.forEach((c) => {
+            c.y += Math.cos(c.d / 10) + 1;
+            c.x += Math.sin(c.d);
+          });
+        }
+
+        function animate() {
+          draw();
+          requestAnimationFrame(animate);
+        }
+
+        animate();
+      }
+
+      let text = `Dear Hitakshi,\n\nOh my dear princess. From your innocent eyes to your so damn killer smile.....    yes that god damn smile, everything about you completes my world. On this special day, How can a special day go without special word so....    I love you my sweetieee, cutieeee baby, my everything, I love you more than words could ever saw.\n\nHappy Birthday, my forever favourite person 💖`;
+
+      let i = 0;
+
+      function typeWriter() {
+        if (i < text.length) {
+          document.getElementById("text_screen3").innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typeWriter, 25);
+        }
+      }
+
+      let canvas,
+        ctx,
+        basket,
+        hearts,
+        score = 0;
+
+      function startGame() {
+        canvas = document.getElementById("gameCanvas");
+        ctx = canvas.getContext("2d");
+        basket = { x: 150, y: 470, w: 100, h: 20 };
+        hearts = Array.from({ length: 5 }, () => ({
+          x: Math.random() * 350,
+          y: -Math.random() * 300,
+          r: 15,
+        }));
+
+        document.addEventListener(
+          "mousemove",
+          (e) => (basket.x = e.offsetX - 50)
+        );
+
+        requestAnimationFrame(updateGame);
+      }
+
+      function updateGame() {
+        ctx.clearRect(0, 0, 400, 500);
+        ctx.fillStyle = "#ff69b4";
+        ctx.fillRect(basket.x, basket.y, basket.w, basket.h);
+        ctx.fillStyle = "red";
+
+        for (let h of hearts) {
+          ctx.font = "40px Arial"
+          ctx.fillText("❤️", h.x, h.y)
+          h.y += 2;
+          if (h.y > 470 && h.x > basket.x - basket.w/2 && h.x < basket.x + basket.w/2) {
+            h.y = -Math.random() * 200;
+            h.x = Math.random() * 350;
+            score++;
+            document.getElementById(
+              "scoreDisplay"
+            ).innerText = `Hearts Caught: ${score}`;
+            if (score >= 10){
+              nextScreen("screen5");
+            };
+          }
+          if (h.y > 500) {
+            h.y = -Math.random() * 200;
+            h.x = Math.random() * 350;
+          }
+        }
+
+        requestAnimationFrame(updateGame);
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add("show");
+          }
+          else{
+            entry.target.classList.remove("show");
+          }
+        });
+      });
+
+      const elements = document.querySelectorAll(".timeline-item");
+
+      elements.forEach(el => {
+        observer.observe(el);
+      });
+
+      let compliments = [
+        "You are prettiest girl in universe ❤️",
+        "You are my favourite feeling ❤️",
+        "You're gentle, You're rare.... You're mine ❤️",
+        "You are superrrrrrr adorable ❤️",
+        "You make me feel lucky every single day ❤️",
+        "You're my safest, most comfortable place ❤️"
+      ];
+
+      for (let i = 1; i < 7; i++) {
+        const gift = document.querySelector(`.gift${i}`);
+
+        gift.addEventListener("click", () => {
+          gift.innerText = compliments[i-1];
+          gift.style.fontSize = "2em";
+
+          try {
+            document.getElementById(`audio${i}`).play()
+          } catch (error) {
+            console.log("no audio available");
+          };
+    
+          setTimeout(() => {
+            gift.innerText = "🎁";
+            gift.style.fontSize = "10em";
+          }, 2500);
+        });
+      }
+      
+    </script>
+  </body>
+</html>
